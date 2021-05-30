@@ -1,0 +1,92 @@
+{
+  "name": "react-otus",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx webpack serve --mode development --hot",
+    "build": "npx webpack",
+    "lint": "npx eslint --ext .js,.jsx,.ts,.tsx --fix ./",
+    "loki:update": "npm run build-storybook && npx loki update --requireReference --reactUri file:./storybook-static",
+    "loki:approve": "npx loki approve",
+    "test": "npx jest",
+    "test:loki": "npm run build-storybook && npx loki --requireReference --reactUri file:./storybook-static",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "prepare": "husky install"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run check",
+      "pre-push": "npm run check"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scorp1/react-app.git"
+  },
+  "author": "Vladimir Beloplotov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/scorp1/react-app/issues"
+  },
+  "homepage": "https://github.com/scorp1/react-app#readme",
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-react": "^7.13.13",
+    "@babel/preset-typescript": "^7.13.0",
+    "@storybook/addon-actions": "^6.2.9",
+    "@storybook/addon-essentials": "^6.2.9",
+    "@storybook/addon-knobs": "^6.2.9",
+    "@storybook/addon-links": "^6.2.9",
+    "@storybook/addon-storysource": "^6.2.9",
+    "@storybook/addons": "^6.2.9",
+    "@storybook/react": "^6.2.9",
+    "@types/enzyme": "^3.10.8",
+    "@types/jest": "^25.2.3",
+    "@types/react": "^17.0.5",
+    "@types/react-dom": "^17.0.3",
+    "@types/styled-components": "^5.1.9",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.1",
+    "babel-jest": "^26.6.3",
+    "babel-loader": "^8.1.0",
+    "enzyme": "^3.11.0",
+    "eslint": "^7.24.0",
+    "eslint-config-prettier": "^8.2.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "html-webpack-plugin": "^4.5.2",
+    "husky": "^6.0.0",
+    "jest": "^26.6.3",
+    "loki": "^0.28.1",
+    "prettier": "2.2.1",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.4",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "styled-components": "^5.3.0"
+  },
+  "loki": {
+    "configurations": {
+      "chrome.laptop": {
+        "target": "chrome.docker",
+        "width": 1366,
+        "height": 768,
+        "deviceScaleFactor": 1,
+        "mobile": false
+      },
+      "chrome.iphone7": {
+        "target": "chrome.docker",
+        "preset": "iPhone 7"
+      }
+    }
+  }
+}
